@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:ui_build_experiment/models/Campaign.dart';
 import 'package:ui_build_experiment/tools.dart';
 import 'package:ui_build_experiment/views/create_view.dart';
 import 'package:ui_build_experiment/views/drawer.dart';
 import 'package:ui_build_experiment/views/navbar.dart';
 import 'package:ui_build_experiment/views/profile_view.dart';
 
+import 'campaign_overview.dart';
 import 'main_view.dart';
 
 //Defines which widgets can be accessed from the application
@@ -13,6 +15,7 @@ List<Widget> availableViews = [
 ];
 //Defines the currently accessed widget
 late Widget selectedView;
+late StateSetter stateSetter;
 
 class CoreView extends StatefulWidget {
   const CoreView({super.key,});
@@ -23,11 +26,13 @@ class CoreView extends StatefulWidget {
 
 class _CoreViewState extends State<CoreView> {
 
-
   @override
   void initState() {
     super.initState();
     selectedView = availableViews[0];
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      stateSetter = setState;
+    });
   }
   @override
   void dispose() {
@@ -49,7 +54,7 @@ class _CoreViewState extends State<CoreView> {
                   onPressed: () {
                     Scaffold.of(context).openDrawer();
                   },
-                  icon: Icon(Icons.menu, color: Colors.white,),
+                  icon: const Icon(Icons.menu, color: Colors.white,),
                 );
               }
             ),

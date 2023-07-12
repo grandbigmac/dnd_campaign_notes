@@ -8,6 +8,8 @@ import 'package:ui_build_experiment/tools.dart';
 import 'package:ui_build_experiment/views/navbar.dart';
 
 import '../models/Campaign.dart';
+import 'campaign_overview.dart';
+import 'core_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key,});
@@ -21,15 +23,14 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    log('Reinit home');
     clearLists();
     homePageDataFuture = getHomeData();
   }
   @override
   void dispose() {
     super.dispose();
-    log('Dispose home');
     clearLists();
+    disposeControllers();
   }
 
   Widget campaignIconWidget(Campaign campaign, int index) {
@@ -43,7 +44,11 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
         onTapUp: (details) => controller.reverse(),
         onTapCancel: () => controller.reverse(),
         onTap: () {
-          //Go to campaign view
+          stateSetter(() {
+            clearLists();
+            disposeControllers();
+            selectedView = CampaignOverview(campaign: campaign);
+          });
         },
         child: Transform.scale(
           scale: scaleList[index],

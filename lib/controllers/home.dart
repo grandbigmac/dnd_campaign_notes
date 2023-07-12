@@ -50,6 +50,12 @@ void clearLists() {
   scaleList.clear();
 }
 
+void disposeControllers() {
+  for (AnimationController i in animControllerList) {
+    i.dispose();
+  }
+}
+
 void openCreateCampaignModal(BuildContext context) {
   showModalBottomSheet(
       context: context,
