@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "110528729840",
+    "project_id": "dnd-npc-project",
+    "storage_bucket": "dnd-npc-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:110528729840:android:fbbaf0b7c2d289416f6835",
+        "android_client_info": {
+          "package_name": "harry.test.thing.ui_build_experiment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "110528729840-no89easi5bc0hmna5i6l0qoq4qtiu84k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHa03K7CGn31Ep7twPlzsoEwThYe4155I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "110528729840-no89easi5bc0hmna5i6l0qoq4qtiu84k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
