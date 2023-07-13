@@ -3,7 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:ui_build_experiment/models/Campaign.dart';
 import 'package:ui_build_experiment/tools.dart';
-import 'package:ui_build_experiment/views/campaign_modals/monster.dart';
+import 'package:ui_build_experiment/views/campaign_modals/location.dart';
+import 'package:ui_build_experiment/views/campaign_modals/npc.dart';
 
 class CampaignOverview extends StatefulWidget {
   const CampaignOverview({super.key, required this.campaign});
@@ -121,7 +122,7 @@ class _CampaignOverviewState extends State<CampaignOverview> with TickerProvider
                           onTapUp: (details) => _monsterController.reverse(),
                           onTapCancel: () => _monsterController.reverse(),
                           onTap: () {
-                            openCampaignModalSheet(context, 'monster');
+                            //openCampaignModalSheet(context, 'npc');
                           },
                           child: Transform.scale(
                             scale: _scaleMonster,
@@ -144,7 +145,7 @@ class _CampaignOverviewState extends State<CampaignOverview> with TickerProvider
                             onTapUp: (details) => _locationController.reverse(),
                             onTapCancel: () => _locationController.reverse(),
                             onTap: () {
-                              //
+                              openCampaignModalSheet(context, 'location', campaign);
                             },
                             child: Transform.scale(
                               scale: _scaleLocation,
@@ -167,7 +168,7 @@ class _CampaignOverviewState extends State<CampaignOverview> with TickerProvider
                             onTapUp: (details) => _npcController.reverse(),
                             onTapCancel: () => _npcController.reverse(),
                             onTap: () {
-                              //
+                              openCampaignModalSheet(context, 'npc', campaign);
                             },
                             child: Transform.scale(
                               scale: _scaleNpc,
@@ -303,7 +304,7 @@ class _CampaignOverviewState extends State<CampaignOverview> with TickerProvider
   }
 }
 
-void openCampaignModalSheet(BuildContext context, String type) {
+void openCampaignModalSheet(BuildContext context, String type, Campaign campaign) {
   showModalBottomSheet(
       context: context,
       isDismissible: false,
@@ -313,15 +314,15 @@ void openCampaignModalSheet(BuildContext context, String type) {
       builder: (BuildContext context) {
         switch (type) {
           case 'monster':
-            return const MonsterModal();
+            return NPCModal(campaign: campaign,);
           case 'location':
-            return const MonsterModal();
+            return LocationModal(campaign: campaign,);
           case 'npc':
-            return const MonsterModal();
+            return NPCModal(campaign: campaign,);
           case 'item':
-            return const MonsterModal();
+            return NPCModal(campaign: campaign,);
           default:
-            return const MonsterModal();
+            return NPCModal(campaign: campaign,);
         }
       }
   );
